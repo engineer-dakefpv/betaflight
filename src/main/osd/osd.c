@@ -412,16 +412,10 @@ void pgResetFn_osdConfig(osdConfig_t *osdConfig)
     osdConfig->aux_scale = 200;
     osdConfig->aux_symbol = 'A';
 
-    // Make it obvious on the configurator that the FC doesn't support HD
-#ifdef USE_OSD_HD
-    osdConfig->displayPortDevice = OSD_DISPLAYPORT_DEVICE_MSP;
-    osdConfig->canvas_cols = OSD_HD_COLS;
-    osdConfig->canvas_rows = OSD_HD_ROWS;
-#else
+    // OSD 默认使用模拟图传
     osdConfig->displayPortDevice = OSD_DISPLAYPORT_DEVICE_AUTO;
     osdConfig->canvas_cols = OSD_SD_COLS;
     osdConfig->canvas_rows = OSD_SD_ROWS;
-#endif
 
 #ifdef USE_OSD_QUICK_MENU
     osdConfig->osd_use_quick_menu = true;
@@ -434,14 +428,9 @@ void pgResetFn_osdConfig(osdConfig_t *osdConfig)
 
 void pgResetFn_osdElementConfig(osdElementConfig_t *osdElementConfig)
 {
-// If user includes OSD_HD in the build assume they want to use it as default
-#ifdef USE_OSD_HD
-    uint8_t midRow = 10;
-    uint8_t midCol = 26;
-#else
+    // OSD 默认使用模拟图传
     uint8_t midRow = 7;
     uint8_t midCol = 15;
-#endif
 
     // Position elements near centre of screen and disabled by default
     for (int i = 0; i < OSD_ITEM_COUNT; i++) {
