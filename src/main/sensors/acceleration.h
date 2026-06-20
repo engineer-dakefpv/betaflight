@@ -49,6 +49,8 @@ typedef enum {
     ACC_LSM6DSO,
     ACC_LSM6DSV16X,
     ACC_LSM6DSK320X,
+    ACC_ICM45605,
+    ACC_ICM45686,
     ACC_VIRTUAL
 } accelerationSensor_e;
 

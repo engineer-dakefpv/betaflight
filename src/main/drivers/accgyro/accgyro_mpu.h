@@ -45,6 +45,8 @@
 #define ICM20689_WHO_AM_I_CONST             (0x98)
 #define ICM42605_WHO_AM_I_CONST             (0x42)
 #define ICM42688P_WHO_AM_I_CONST            (0x47)
+#define ICM45686_WHO_AM_I_CONST             (0xE9)
+#define ICM45605_WHO_AM_I_CONST             (0xE5)
 #define LSM6DSV16X_WHO_AM_I_CONST           (0x70)
 #define LSM6DSK320X_WHO_AM_I_CONST          (0x75)
 
@@ -207,7 +209,9 @@ typedef enum {
     LSM6DSO_SPI,
     L3GD20_SPI,
     LSM6DSV16X_SPI,
-    LSM6DSK320X_SPI
+    LSM6DSK320X_SPI,
+    ICM_45605_SPI,
+    ICM_45686_SPI,
 } mpuSensor_e;
 
 typedef enum {
