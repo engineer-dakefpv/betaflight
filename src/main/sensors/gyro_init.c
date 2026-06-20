@@ -330,6 +330,7 @@ void gyroInitSensor(gyroSensor_t *gyroSensor, const gyroDeviceConfig_t *config)
     case GYRO_MPU9250:
     case GYRO_LSM6DSO:
     case GYRO_LSM6DSV16X:
+    case GYRO_LSM6DSK320X:
     case GYRO_ICM42688P:
     case GYRO_ICM42605:
         gyroSensor->gyroDev.gyroHasOverflowProtection = true;
@@ -513,6 +514,15 @@ STATIC_UNIT_TESTED gyroHardware_e gyroDetect(gyroDev_t *dev)
     case GYRO_LSM6DSV16X:
         if (lsm6dsv16xSpiGyroDetect(dev)) {
             gyroHardware = GYRO_LSM6DSV16X;
+            break;
+        }
+        FALLTHROUGH;
+#endif
+
+#ifdef USE_ACCGYRO_LSM6DSK320X
+    case GYRO_LSM6DSK320X:
+        if (lsm6dsk320xSpiGyroDetect(dev)) {
+            gyroHardware = GYRO_LSM6DSK320X;
             break;
         }
         FALLTHROUGH;
